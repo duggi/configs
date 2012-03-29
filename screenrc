@@ -1,0 +1,19 @@
+shell -${SHELL}
+
+defscrollback 100000
+
+startup_message off
+
+hardstatus alwayslastline
+hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{=kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B}%Y-%m-%d%{W}%c %{g}]'
+
+# default screens
+screen -t stuff 0
+screen -t server 1
+#screen -t css 2
+#screen -t js 3
+
+# bindings
+# Bind F11 and F12 (NOT F1 and F2) to previous and next screen window
+bindkey -k F1 prev
+bindkey -k F2 next

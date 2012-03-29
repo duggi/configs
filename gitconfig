@@ -1,0 +1,11 @@
+[user]
+  name = duggi
+  email = douglee650@gmail.com
+[color]
+  ui = true
+  status = true
+  log = true
+  diff = true
+  branch = auto
+[core]
+  editor = /usr/bin/vim
