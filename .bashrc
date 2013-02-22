@@ -6,7 +6,7 @@
 #             |___|
 # ------------------------------ ~/.bashrc
 
-# ------------------------------------- HONESTLY, I HAVE NO IDEAS
+# ------------------------------------- BASE BASHRC
 
 if [ -f /private/etc/bashrc ]; then
     . /private/etc/bashrc
