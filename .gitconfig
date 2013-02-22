@@ -9,3 +9,4 @@
   branch = auto
 [core]
   editor = /usr/bin/vim
+  excludesfile = /Users/duggi/.gitignore_global

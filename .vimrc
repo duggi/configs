@@ -6,24 +6,25 @@ set encoding=utf-8
 set hidden
 filetype plugin indent on
 let mapleader = ","
+set directory=/tmp
 
 
 " VIEWPORT
 set showcmd
 set ruler
-set number
-set background=dark
+" set number
+" set background=dark
 if has("gui_running")
-  color default
+  color hemisu
 else
  if has("win32")
-  color default
+  color hemisu
  else
   set t_Co=256
-  color default
+  color hemisu
  endif
 endif
-autocmd FileType html colorscheme wombat
+autocmd FileType html colorscheme hemisu
 
 
 " WHITESPACE
@@ -31,6 +32,7 @@ set nowrap
 set tabstop=2 shiftwidth=2
 set expandtab
 set backspace=indent,eol,start
+" set colorcolumn=80
 
 
 " MOVEMENT
@@ -48,8 +50,10 @@ set smartcase
 
 " FORMATTING
 set pastetoggle=<F6>
+
 " destroy whitespace
 :nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+
 " list buffers, number to select
 :nnoremap <F4> :buffers<CR>:buffer<Space>
 
@@ -65,3 +69,25 @@ au BufNewFile,BufRead *.eco set filetype=html
 set list listchars=tab:>.,trail:.,extends:$,precedes:<      " paint the shame
 map <leader>cd :cd %:p:h<cr>                                " cd to dir of buffer's file
 
+map <silent> <Leader>cx :set cursorcolumn! <CR>
+imap <silent> <Leader>cx <Esc>:set cursorcolumn! <CR>a
+
+" toggle colored right border after 80 chars
+set colorcolumn=80
+let s:color_column_old = 0
+
+function! s:ToggleColorColumn()
+    if s:color_column_old == 0
+        let s:color_column_old = &colorcolumn
+        windo let &colorcolumn = 0
+    else
+        windo let &colorcolumn=s:color_column_old
+        let s:color_column_old = 0
+    endif
+endfunction
+
+nnoremap <Leader>cc :call <SID>ToggleColorColumn()<cr>
+
+
+" Markdown to HTML
+nmap <leader>md :%!/usr/local/bin/markdown --html4tags <cr>
