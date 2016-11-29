@@ -13,13 +13,19 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
-/bin
 
-# it's like an appendix on your head
+# Mac OS meta
 .DS_Store
+Icon
+Icon
 
 # vim
 .*.sw[a-z]
 *.sw[a-z]
 *.un~
 Session.vim
+
+
+# personal
+*.env
+*.bak
