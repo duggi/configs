@@ -20,6 +20,7 @@ PS1='\h:\W \u\$ '
 # Make bash check its window size after a process completes
 shopt -s checkwinsize
 
+[ -r "/etc/bashrc_$TERM_PROGRAM" ] && . "/etc/bashrc_$TERM_PROGRAM"
 
 
 # ------------------------------------- GLOBAL ALIAS
@@ -31,6 +32,8 @@ alias pg='ping www.google.com'
 alias l='ls -l1GF'
 alias lx='ls -lGF'
 alias la='ls -laGF'
+
+alias ..='cd ..'
 
 function cl(){ cd "$@" && la; }
 
@@ -57,11 +60,10 @@ if [ "$TERM_PROGRAM" == "Apple_Terminal" ] && [ -z "$INSIDE_EMACS" ]; then
         # Identify the directory using a "file:" scheme URL,
         # including the host name to disambiguate local vs.
         # remote connections. Percent-escape spaces.
-	local SEARCH=' '
-	local REPLACE='%20'
-	local PWD_URL="file://$HOSTNAME${PWD//$SEARCH/$REPLACE}"
-	printf '\e]7;%s\a' "$PWD_URL"
+  local SEARCH=' '
+  local REPLACE='%20'
+  local PWD_URL="file://$HOSTNAME${PWD//$SEARCH/$REPLACE}"
+  printf '\e]7;%s\a' "$PWD_URL"
     }
     PROMPT_COMMAND="update_terminal_cwd; $PROMPT_COMMAND"
 fi
-								    
