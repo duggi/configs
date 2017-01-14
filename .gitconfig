@@ -7,6 +7,11 @@
   log = true
   diff = true
   branch = auto
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
 [core]
   editor = /usr/bin/vim
   excludesfile = /Users/duggi/.gitignore_global
