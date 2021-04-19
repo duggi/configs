@@ -1,13 +1,26 @@
-" ----- START VUNDLE
-"       :PluginInstall
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
+syntax enable
+set encoding=utf-8
+"set clipboard=unnamed
+set hidden
+set directory=/tmp
+set laststatus=2
+set visualbell
+nmap <Up> gk
+nmap <Down> gj
+
+
+"
+" ----- VUNDLE
+"       :PluginInstall
 call vundle#begin()
 
-" Plugins
-" let Vundle manage Vundle, required
+" Required
 Plugin 'VundleVim/Vundle.vim'
+"
+" Plugins
 Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rails'
@@ -16,8 +29,9 @@ Plugin 'tpope/vim-surround'
 
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
-
+Plugin 'qpkorr/vim-bufkill'
 Plugin 'jlanzarotta/bufexplorer'
+
 Plugin 'mattn/emmet-vim'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'godlygeek/tabular'
@@ -25,29 +39,41 @@ Plugin 'godlygeek/tabular'
 "Plugin 'ervandew/supertab'
 "Plugin 'kchmck/vim-coffee-script'
 
-
 call vundle#end()
 filetype plugin indent on
 " ----- END VUNDLE
 
 
-
-
-" ----- STUFF
-syntax enable
-set encoding=utf-8
-"set clipboard=unnamed
-set hidden
+"
+" ----- LEADER MAPPINGS
+"
 let mapleader = ","
-set directory=/tmp
-set laststatus=2
-set visualbell
-nmap <Up> gk
-nmap <Down> gj
+
+" nerdtree
+nnoremap <Leader>l :NERDTreeToggle<Enter>
+nnoremap <silent> <Leader>; :NERDTreeFind<CR>
+"
+" themes
+nmap <Leader>t :call LightTheme()<CR>
+nmap <Leader>d :call DarkTheme()<CR>
+
+" cursor hud
+nnoremap <Leader>cca :call <SID>ToggleColorColumnAll()<cr>
+nmap <Leader>cc :call ToggleColorColumnActive()<CR>
+:nnoremap <Leader>cx :set cursorline!<CR>
+map <Leader>cz :set cursorcolumn! <CR>
+imap <Leader>cz <Esc>:set cursorcolumn! <CR>a
+
+" markdown to html
+nmap <leader>md :%!/usr/local/bin/Markdown.pl --html4tags <cr>
+
+" change up to semicolon. hi css :) // WTF?
+":nnoremap <Leader>; ct;
 
 
-
+"
 " ----- F KEYS
+"
 nnoremap  <F2> :set nonumber!<CR>
 :map      <F3> :set nowrap! <CR>
 :nnoremap <F4> :buffers<CR>:buffer<Space>
@@ -60,12 +86,24 @@ nmap <F9> :CtrlPClearAllCaches<CR>
 noremap <silent> <F10> :let @+=expand("%:p")<CR>
 
 
+
+
+
+" ----- NERDTREE
+" close NT if file opened from there
+"let NERDTreeQuitOnOpen = 1
+
+" close tab if only NT left
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+
+
 " ----- VIEWPORT
 set showcmd
 set ruler
 set number
 set background=dark
-set guifont=Ubuntu\ Mono:h13
+set guifont=Ubuntu\ Mono:h15
 if has("gui_running")
   color codeschool
 else
@@ -84,7 +122,6 @@ function! LightTheme()
   color pencil
   set background=light
 endfunction
-nmap <Leader>l :call LightTheme()<CR>
 
 " -- set pencil dark theme
 "    TODO make it a toggle to dark theme
@@ -92,7 +129,6 @@ function! DarkTheme()
   color codeschool
   set background=dark
 endfunction
-nmap <Leader>d :call DarkTheme()<CR>
 
 
 " ----- CURSOR
@@ -143,18 +179,12 @@ au BufNewFile,BufRead *.sass set filetype=haml
 au BufNewFile,BufRead *.jade set filetype=haml
 
 
-" ----- STUFF
-set list listchars=tab:>.,trail:.,extends:$,precedes:<
-map <leader>cd :cd %:p:h<cr>
-"map <leader>m :MiniBufExplorer<cr>
 
-map <silent> <Leader>cx :set cursorcolumn! <CR>
-imap <silent> <Leader>cx <Esc>:set cursorcolumn! <CR>a
-
-
+" ----- CURSOR HUD
+" -- toggle colorcolumn all windows
 "set colorcolumn=80
-"let s:color_column_old = 0
-function! s:ToggleColorColumn()
+let s:color_column_old = 0
+function! s:ToggleColorColumnAll()
   set colorcolumn=80
   if s:color_column_old == 0
     let s:color_column_old = &colorcolumn
@@ -164,18 +194,9 @@ function! s:ToggleColorColumn()
     let s:color_column_old = 0
   endif
 endfunction
-"nnoremap <Leader>cc :call <SID>ToggleColorColumn()<cr>
 
-
-" -- toggle cursorline
-:nnoremap <Leader>cl :set cursorline!<CR>
-
-" -- change up to semicolon. hi css :)
-:nnoremap <Leader>; ct;
-
-
-" -- toggle colorcolumn (single window)
-function! ColorColumn()
+" -- toggle colorcolumn single window
+function! ToggleColorColumnActive()
   if empty(&colorcolumn)
     if empty(&textwidth)
       echo "colorcolumn=80"
@@ -189,11 +210,14 @@ function! ColorColumn()
     setlocal colorcolumn=
   endif
 endfunction
-nmap <Leader>cc :call ColorColumn()<CR>
 
 
-" -- markdown to html
-nmap <leader>md :%!/usr/local/bin/Markdown.pl --html4tags <cr>
+
+" ----- STUFF
+set list listchars=tab:>.,trail:.,extends:$,precedes:<
+
+
+
 
 
 " -- ctrl p
@@ -205,6 +229,11 @@ let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 " -- supertab
 let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 "let g:SuperTabDefaultCompletionType = "context"
+
+
+" -- nerdtree
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
 
 
 " -- 70 COL LINE SPER
