@@ -1,6 +1,6 @@
 [user]
-  name = duggi
-  email = 
+	name = Doug Lee
+	email = doug@bigbadgoose.com
 [color]
   ui = true
   status = true
@@ -9,9 +9,17 @@
   branch = auto
 [color "diff"]
   meta = yellow bold
-  frag = magenta bold
+  frag = cyan dim
   old = red bold
   new = green bold
 [core]
   editor = /usr/bin/vim
-  excludesfile = /Users/duggi/.gitignore_global
+  excludesfile = /Users/douglee2/.gitignore_global
+	pager = less -r
+[pull]
+	rebase = false
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

@@ -1,4 +1,4 @@
-echo "--> loaded ~/.bashrc"
+echo "***** BASHRC: ~/.bashrc"
 
 # -- WHEN VIDCAM GETS STUCK
 #alias resetcam="sudo killall VDCAssistant"
@@ -19,9 +19,15 @@ echo "--> loaded ~/.bashrc"
 
 export EDITOR=/usr/bin/vim
 export GREP_OPTIONS='--color=auto'
+export LESS_IS_MORE=1
+
+alias vimrc='mvim ~/.vimrc'
+alias macs='cat ~/.bash_aliases /etc/bashrc ~/.bashrc'
+alias tree='tree -C'
 
 
 # -- GLOBAL ALIAS
+alias m='mvim'
 alias brc='mvim ~/.bashrc'
 alias sbrc='source ~/.bashrc'
 alias pg='ping www.google.com'
@@ -36,6 +42,10 @@ alias oxgrep=xgrepOpen
 alias xfind="find . -name $1"
 alias xfindd="find . -name $1"
 alias oxfind=findOpen
+
+alias ~='cd ~'
+alias dt='cd ~/Desktop'
+alias cap='screencapture -T5 -c'
 
 function xgrepOpen() {
   # grep <term> <path> : $0 $1 $2
@@ -54,45 +64,20 @@ mkcd () {
 cl(){ cd "$@" && la; }
 
 
-# -- CONFIG
-alias vimrc='mvim ~/.vimrc'
-alias macs='cat /etc/bashrc ~/.bashrc'
-alias sshc='mvim ~/.ssh/config'
-
-
 # -- NOTES
-alias recipes='mvim ~/bbg/Google\ Drive/notes/recipes.txt'
-alias thoughts='mvim ~/thoughts.txt'
-alias notes='mvim ~/bbg/Google\ Drive/notes/notes.txt'
-alias doit='mvim ~/bbg/Google\ Drive/notes/doit.txt'
-alias hours='mvim ~/bbg/Google\ Drive/notes/hours.txt'
-alias ideas='mvim ~/bbg/Google\ Drive/notes/ideas.txt'
-alias devnotes='mvim ~/bbg/Google\ Drive/notes/devnotes.txt'
-alias gvnotes='mvim ~/bbg/Google\ Drive/notes/gvnotes.txt'
+alias thoughts='mvim ~/_thoughts.txt'
+alias liv='open /Volumes/GoogleDrive/My\ Drive/living'
+alias tb='open https://tidbits-tln.firebaseapp.com/'
 
 
 # -- DIRS
-alias bbg='cd ~/bbg'
-alias dev='cd ~/bbg/dev'
-alias gvs='cd ~/bbg/dev/guidevine-saas'
-alias gve='cd ~/bbg/dev/gve'
-alias gvb='cd /Users/douglee2/Sites/newsroom/wp-content/themes/guidevine-wordpress'
-#alias gd='cd /Volumes/GoogleDrive/My\ Drive/'
+alias dev='cd ~/dev'
+alias gvdc='cd ~/dev/guidevine-saas'
+alias gve='cd ~/dev/gve'
 alias gv='cd /Volumes/GoogleDrive/My\ Drive/guidevine'
+alias ogv='open /Volumes/GoogleDrive/My\ Drive/guidevine'
+alias gvedb='psql -Udouglee2 -dgve_dev'
 
-#alias bz='cd /Users/douglee/dev/bizconomy'
-#alias pastd='cd /Users/douglee/dev/paster'
-#alias db='cd /Users/douglee/bbg/Dropbox'
-#alias gdc='cd /Users/douglee/bbg/Google\ Drive/clients'
-#alias stuff='cd /Users/douglee/stuff'
-
-## -- RAILS
-#alias rs='rails s'
-#alias rc='rails c'
-#alias bers='bundle exec foreman run rails server'
-#alias berc='bundle exec foreman run rails console'
-#alias be='bundle exec foreman run'
-#alias js='jekyll serve -w --trace'
 
 ## -- GIT
 alias gp='git pull'
@@ -150,3 +135,4 @@ export PATH=$PATH:/usr/local/Cellar/sass/1.14.3
 ## NVM
 export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

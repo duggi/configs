@@ -16,8 +16,8 @@
 
 # Mac OS meta
 .DS_Store
-Icon
 Icon
+Icon?
 
 # vim
 .*.sw[a-z]
@@ -29,3 +29,8 @@ Session.vim
 # personal
 *.env
 *.bak
+xxx_ignore/
+
+# rails erd
+.erdconfig
+erd.pdf
