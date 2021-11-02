@@ -64,6 +64,10 @@ nmap <Leader>cc :call ToggleColorColumnActive()<CR>
 map <Leader>cz :set cursorcolumn! <CR>
 imap <Leader>cz <Esc>:set cursorcolumn! <CR>a
 
+" change directory
+map <leader>cd :cd %:p:h<cr>
+
+
 " markdown to html
 nmap <leader>md :%!/usr/local/bin/Markdown.pl --html4tags <cr>
 

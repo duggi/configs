@@ -63,12 +63,12 @@ if ! exists("g:pencil_gutter_color")
 endif
 
 " Colors
-let s:black           = { "gui": "#111111", "cterm": "0"   }
+let s:black           = { "gui": "#666564", "cterm": "0"   }
 let s:medium_black    = { "gui": "#2a2c2e", "cterm": "0"   }
 let s:medium_gray     = { "gui": "#767676", "cterm": "243" }
 let s:white           = { "gui": "#FAFAFA", "cterm": "15"  }
 let s:actual_white    = { "gui": "#FFFFFF", "cterm": "231" }
-let s:light_black     = { "gui": "#424242", "cterm": "8"   }
+let s:light_black     = { "gui": "#666666", "cterm": "8"   }
 let s:lighter_black   = { "gui": "#545454", "cterm": "240" }
 
 if g:pencil_higher_contrast_ui == 0
