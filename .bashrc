@@ -68,9 +68,8 @@ alias gsp='git status --porcelain'
 alias gss='git status --short'
 alias gl='git log'
 alias gls='git log --stat'
-alias gl1="git log --oneline"
-alias gl2="git log --oneline --pretty=format:'%C(yellow)%h%Creset %C(magenta)(%cD)%Creset %s %C(bold blue)<%an>%Creset'"
-alias gl3="git log --oneline --pretty=format:'%C(yellow)%h%Creset %Creset %s %C(bold blue)<%an>%Creset'"
+alias gl1="git log --pretty=format:'%C(yellow)%h %Creset%s %C(green)<%an>%Creset' --date=short"
+alias gl2="git log --pretty=format:'%C(yellow)%h %C(magenta)%ad %Creset%s %C(green)<%an>%Creset' --date=short"
 alias glg="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias ge=gitOpen
 function gitOpen() {
