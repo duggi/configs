@@ -14,7 +14,7 @@
   new = green bold
 [core]
   editor = /usr/bin/vim
-  excludesfile = /Users/douglee2/.gitignore_global
+  excludesfile = /Users/douglee/.gitignore_global
   pager = less -r
 [pull]
   rebase = false
