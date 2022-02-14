@@ -1,16 +1,13 @@
-echo "***** BASH_PROFILE: ~/.bash_profile"
+echo "# ~/.bash_profile"
 
-# source
-#source ~/.profile
+
+
+# -- remove macOS bash terminal warning
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
+# -- add Homebrew to PATH
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# -- .bashrc is last
 [[ -s ~/.bashrc ]] && source ~/.bashrc
 
-
-# -- NVM
-#[[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh
-
-export PATH=$(echo $PATH | sed 's|/usr/local/bin||; s|/usr/local/sbin||; s|::|:|; s|^:||; s|\(.*\)|/usr/local/bin:/usr/local/sbin:\1|')
-
-
-# -- RBENV
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
