@@ -1,0 +1,17 @@
+name: pr-title
+on:
+  pull_request:
+    types: [opened, edited, synchronize]
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: check title convention
+        env:
+          TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          if ! echo "$TITLE" | grep -qE '^(feat|fix|chore|docs|refactor|perf|test|build|ci|revert): [a-z0-9]'; then
+            echo "PR title must be 'type: short description' — colon, one space, first character lowercase."
+            echo "Got: $TITLE"
+            exit 1
+          fi

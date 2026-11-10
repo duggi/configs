@@ -13,9 +13,11 @@
   old = red bold
   new = green bold
 [core]
+#  editor = /opt/homebrew/bin/mvim
   editor = /usr/bin/vim
-  excludesfile = /Users/douglee/.gitignore_global
+  excludesfile = /Users/doug/.gitignore_global
   pager = less -r
+  ignorecase = false
 [pull]
   rebase = false
 [filter "lfs"]
@@ -23,3 +25,21 @@
   smudge = git-lfs smudge -- %f
   process = git-lfs filter-process
   required = true
+[init]
+  defaultBranch = main
+[push]
+  autoSetupRemote = true
+
+# Identity by directory tree; global default above is personal (douglee650@gmail.com)
+[includeIf "gitdir:~/dev/zk/"]
+	path = ~/.gitconfig-zk
+[includeIf "gitdir:~/dev/s5/"]
+	path = ~/.gitconfig-s5
+[includeIf "gitdir:~/dev/dl/"]
+	path = ~/.gitconfig-dl
+[credential "https://github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential

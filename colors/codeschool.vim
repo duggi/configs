@@ -14,12 +14,13 @@ let g:colors_name = "codeschool"
 "hi Cursor ctermfg=16 ctermbg=145 cterm=NONE guifg=#182227 guibg=#9ea7a6 gui=NONE
 hi Cursor ctermfg=16 ctermbg=145 cterm=NONE guifg=#ff0000 guibg=#ffff00 gui=NONE
 hi Visual ctermfg=NONE ctermbg=59 cterm=NONE guifg=NONE guibg=#3f4b52 gui=NONE
-"hi CursorLine ctermfg=NONE ctermbg=NONE cterm=underline guifg=NONE guibg=NONE gui=underline
+"hi CursorLine ctermfg=NONE ctermbg=NONE cterm=underline guifg=NONE guibg=NONE gui=underline guisp=#000000
 hi CursorLine ctermfg=NONE ctermbg=NONE cterm=underline guifg=NONE guibg=#3e474b gui=NONE
 "hi CursorColumn ctermfg=NONE ctermbg=23 cterm=NONE guifg=NONE guibg=#2e373b gui=NONE
-hi CursorColumn ctermfg=NONE ctermbg=23 cterm=NONE guifg=NONE guibg=#1e272b gui=NONE
+"hi CursorColumn ctermfg=NONE ctermbg=23 cterm=NONE guifg=NONE guibg=#1e272b gui=NONE
+"hi CursorColumn guibg=NONE guifg=NONE gui=underline guisp=#ffff00
 "hi ColorColumn ctermfg=16 ctermbg=NONE cterm=underline guifg=#ffffff guibg=#2e373b gui=underline
-hi ColorColumn ctermfg=16 ctermbg=NONE cterm=underline guifg=#fafaf0 guibg=#1e272b gui=NONE
+hi ColorColumn ctermfg=16 ctermbg=NONE cterm=underline guifg=#f9f9f0 guibg=#1e272b gui=NONE
 hi LineNr ctermfg=22 ctermbg=16 cterm=NONE guifg=#646e83 guibg=#242e43 gui=NONE
 hi VertSplit ctermfg=8 ctermbg=0 cterm=NONE guifg=#000000 guibg=NONE gui=NONE
 "hi MatchParen ctermfg=NONE ctermbg=NONE cterm=underline guifg=#dda790 guibg=NONE gui=underline
